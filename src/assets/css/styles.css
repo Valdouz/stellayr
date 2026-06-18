@@ -841,6 +841,32 @@ h3 {
   margin-top: 2rem;
 }
 
+/* Encart « Deviens bénévole » */
+.join {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  padding: clamp(1.6rem, 1rem + 2vw, 2.8rem);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgb(214 60 255 / 0.16), transparent 55%), var(--surface);
+}
+
+.join__text {
+  max-width: 60ch;
+}
+
+.join__text .section__title {
+  margin-top: 0.2rem;
+}
+
+.join__cta {
+  flex: none;
+}
+
 /* ── 11. Footer ─────────────────────────────────────────────────────── */
 .footer {
   border-top: 1px solid var(--line);

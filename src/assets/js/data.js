@@ -78,6 +78,13 @@ export const data = {
     { label: "Tarif", value: "Gratuit, ouvert à tous", icon: "ticket" },
   ],
 
+  // ── Bénévoles ─────────────────────────────────────────────────────────
+  volunteer: {
+    title: "Deviens bénévole",
+    text: "Le festival se construit avec sa team de bénévoles : accueil du public, stands, logistique, montage et démontage… Rejoins l'aventure et vis S'TELLAYR de l'intérieur, en préparation comme le jour J.",
+    ctaLabel: "Je veux aider",
+  },
+
   // ── Partenaires ───────────────────────────────────────────────────────
   // logo : chemin vers une image (ou null pour afficher joliment le nom).
   // light : true si le logo a besoin d'un fond clair (logo sombre/coloré).
@@ -111,7 +118,7 @@ export const data = {
   // ── Contact & réseaux ─────────────────────────────────────────────────
   // TODO Akira : renseigne l'e-mail générique de l'asso.
   contact: {
-    email: "contact@stellayr.fr",
+    email: "contact@fallcityband.com",
     instagram: "https://www.instagram.com/s_tellayr/",
     instagramLabel: "@s_tellayr",
   },
