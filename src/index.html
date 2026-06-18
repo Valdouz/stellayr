@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>S'TELLAYR — Festival des étoiles de demain · Épinay-sous-Sénart</title>
+    <meta
+      name="description"
+      content="S'TELLAYR, festival artistique par et pour les jeunes d'Épinay-sous-Sénart. Samedi 4 juillet 2026 au Parc de l'Europe : concours de danse, scène ouverte et DJ set. Gratuit."
+    />
+    <meta name="theme-color" content="#7b2ff7" />
+    <link rel="canonical" href="https://stellayr.fr/" />
+
+    <!-- Partage sur les réseaux -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="S'TELLAYR" />
+    <meta property="og:title" content="S'TELLAYR — Festival des étoiles de demain" />
+    <meta
+      property="og:description"
+      content="Samedi 4 juillet 2026 · Parc de l'Europe, Épinay-sous-Sénart. Concours de danse, scène ouverte, DJ set. Gratuit."
+    />
+    <meta property="og:url" content="https://stellayr.fr/" />
+    <meta property="og:image" content="assets/img/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="assets/img/icon-192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="assets/img/favicon-180.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="module" src="assets/js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <!-- ─────────────── Navigation ─────────────── -->
+    <header class="nav">
+      <div class="nav__inner">
+        <a class="nav__brand" href="#top" aria-label="Accueil S'TELLAYR">
+          <img class="nav__star" src="assets/img/logo-star-white.png" alt="" width="30" height="30" />
+          <span class="nav__name" data-text="name">S'TELLAYR</span>
+        </a>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Ouvrir le menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="nav-menu" class="nav__menu" aria-label="Navigation principale">
+          <a href="#festival">Le festival</a>
+          <a href="#programme">Programme</a>
+          <a href="#infos">Infos pratiques</a>
+          <a href="#asso">L'asso</a>
+          <a class="nav__cta" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ─────────────── Hero ─────────────── -->
+      <section id="top" class="hero" aria-labelledby="hero-title">
+        <div class="hero__stars" aria-hidden="true"></div>
+
+        <div class="hero__content">
+          <p class="hero__eyebrow">
+            <span data-text="edition">1re édition</span> · <span data-text="framework">L'Été Épinay</span>
+          </p>
+          <h1 id="hero-title" class="hero__title">
+            <img class="hero__logo" src="assets/img/logo-stellayr.png" alt="S'TELLAYR" width="880" height="778" />
+          </h1>
+          <p class="hero__tagline" data-text="tagline">Viens admirer les étoiles de demain.</p>
+
+          <ul class="hero__meta">
+            <li><strong data-text="dateLabel">Samedi 4 juillet 2026</strong></li>
+            <li><span data-text="venue">Parc de l'Europe</span>, <span data-text="city">Épinay-sous-Sénart</span></li>
+            <li class="hero__free" data-text="price">Gratuit</li>
+          </ul>
+
+          <!-- Compte à rebours -->
+          <div id="countdown" class="countdown" role="timer" aria-label="Compte à rebours avant le festival">
+            <div class="countdown__unit"><span data-cd="days">--</span><small>jours</small></div>
+            <div class="countdown__unit"><span data-cd="hours">--</span><small>heures</small></div>
+            <div class="countdown__unit"><span data-cd="minutes">--</span><small>min</small></div>
+            <div class="countdown__unit"><span data-cd="seconds">--</span><small>sec</small></div>
+          </div>
+          <p id="countdown-live" class="countdown__live" hidden>
+            ✨ C'est aujourd'hui — rendez-vous au Parc de l'Europe !
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#programme">Voir le programme</a>
+            <a class="btn btn--ghost" href="#infos">Infos pratiques</a>
+          </div>
+        </div>
+        <a class="hero__scroll" href="#festival" aria-label="Faire défiler vers le bas"></a>
+      </section>
+
+      <!-- ─────────────── Le festival ─────────────── -->
+      <section id="festival" class="section">
+        <div class="container">
+          <p class="kicker">Le festival</p>
+          <h2 class="section__title" data-text="intro.title">Un festival par et pour les jeunes</h2>
+          <p class="section__lead" data-text="intro.lead"></p>
+          <div class="prose">
+            <p data-text="intro.paragraphs.0"></p>
+            <p data-text="intro.paragraphs.1"></p>
+          </div>
+          <ul id="objectives" class="objectives"></ul>
+        </div>
+      </section>
+
+      <!-- ─────────────── Programme ─────────────── -->
+      <section id="programme" class="section section--alt">
+        <div class="container">
+          <p class="kicker">Le programme</p>
+          <h2 class="section__title">Trois temps forts</h2>
+          <div id="highlights" class="cards"></div>
+        </div>
+      </section>
+
+      <!-- ─────────────── Infos pratiques ─────────────── -->
+      <section id="infos" class="section">
+        <div class="container">
+          <p class="kicker">Infos pratiques</p>
+          <h2 class="section__title">Quand, où, combien ?</h2>
+          <div id="practical" class="infos"></div>
+          <a class="maplink" data-href="mapUrl" href="#" target="_blank" rel="noopener noreferrer">
+            Voir le Parc de l'Europe sur la carte ↗
+          </a>
+        </div>
+      </section>
+
+      <!-- ─────────────── Venir au festival ─────────────── -->
+      <section id="venir" class="section section--cta">
+        <div class="container">
+          <p class="kicker">Rendez-vous</p>
+          <h2 class="section__title">Viens vivre S'TELLAYR</h2>
+          <p class="section__lead">
+            Samedi 4 juillet 2026, dès 14h, au Parc de l'Europe — entrée gratuite, ouverte à tous.
+          </p>
+          <div class="contact__links">
+            <a class="btn btn--primary" href="#programme">Voir le programme</a>
+            <a class="btn btn--ghost" data-href="mapUrl" href="#" target="_blank" rel="noopener noreferrer"
+              >Itinéraire ↗</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── Partenaires ─────────────── -->
+      <section id="partenaires" class="section">
+        <div class="container">
+          <p class="kicker">Ils nous soutiennent</p>
+          <h2 class="section__title">Partenaires</h2>
+          <ul id="partners" class="partners"></ul>
+        </div>
+      </section>
+
+      <!-- ─────────────── L'association ─────────────── -->
+      <section id="asso" class="section section--alt">
+        <div class="container container--narrow">
+          <p class="kicker">L'association</p>
+          <h2 class="section__title" data-text="association.name">Association S'tellayr</h2>
+          <p class="section__lead" data-text="association.mission"></p>
+          <p class="asso__meta">
+            <span data-text="association.city">Épinay-sous-Sénart (91)</span> · RNA
+            <span data-text="association.rna">W912017001</span> ·
+            <span data-text="association.declared">déclarée le 8 janvier 2026</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ─────────────── Contact ─────────────── -->
+      <section id="contact" class="section section--contact">
+        <div class="container container--narrow">
+          <p class="kicker">Contact</p>
+          <h2 class="section__title">On reste en contact</h2>
+          <p class="section__lead">Une question, une envie de participer ou de devenir partenaire ? Écris-nous.</p>
+          <div class="contact__links">
+            <a class="btn btn--primary" id="contact-email" href="#">Nous écrire</a>
+            <a
+              class="btn btn--ghost"
+              id="contact-insta"
+              data-href="contact.instagram"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram <span data-text="contact.instagramLabel">@stellayr</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ─────────────── Pied de page ─────────────── -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__brand">
+          <span data-text="name">S'TELLAYR</span> · <span data-text="city">Épinay-sous-Sénart</span>
+        </p>
+        <p class="footer__credit">
+          Site développé par
+          <a data-href="repoUrl" href="https://github.com/Valdouz/stellayr" target="_blank" rel="noopener noreferrer"
+            ><strong data-text="author">Akira</strong></a
+          >
+          —
+          <a data-href="repoUrl" href="https://github.com/Valdouz/stellayr" target="_blank" rel="noopener noreferrer"
+            >code source sur GitHub</a
+          >.
+        </p>
+        <p class="footer__small">© <span id="year">2026</span> Association S'tellayr · Tous droits réservés.</p>
+      </div>
+    </footer>
+  </body>
+</html>

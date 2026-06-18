@@ -1,0 +1,21 @@
+# secrets / config locale
+.env
+.env.*
+!.env.example
+
+# dependances / build
+node_modules/
+dist/
+build/
+.cache/
+coverage/
+
+# OS / editeur
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# logs / scratch local
+*.log
+npm-debug.log*

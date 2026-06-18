@@ -1,0 +1,53 @@
+name: Deploy to OVH
+
+# Publie le contenu de src/ sur l'hebergement OVH via FTP a chaque push sur main.
+# Le job ne fait rien tant que les secrets FTP ne sont pas configures (il previent
+# avec un warning au lieu d'echouer). Secrets a definir dans
+# GitHub > Settings > Secrets and variables > Actions :
+#   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_PROTOCOL (ftps/ftp), FTP_REMOTE_DIR
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-ovh
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: FTP deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verifier la presence des secrets FTP
+        id: check
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          if [ -n "$FTP_SERVER" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Secrets FTP absents — deploiement ignore. Ajoutez FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_REMOTE_DIR dans les secrets du depot."
+          fi
+
+      - name: Deploiement FTP vers OVH
+        if: steps.check.outputs.ready == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ secrets.FTP_PROTOCOL }}
+          local-dir: ./src/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          exclude: |
+            **/.DS_Store
+            **/Thumbs.db
