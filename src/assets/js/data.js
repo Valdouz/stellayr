@@ -16,11 +16,14 @@ export const data = {
   dateLabel: "Samedi 4 juillet 2026",
   timeLabel: "À partir de 14h",
   venue: "Parc de l'Europe",
-  venueNote: "face à la mairie",
+  venueNote: "10 Rue de Boussy",
+  street: "10 Rue de Boussy",
+  postalCode: "91860",
   city: "Épinay-sous-Sénart",
   price: "Gratuit",
   framework: "Dans le cadre de « L'Été Épinay »",
-  mapUrl: "https://www.openstreetmap.org/search?query=Parc%20de%20l%27Europe%20Epinay-sous-Senart",
+  mapUrl:
+    "https://www.openstreetmap.org/search?query=10%20Rue%20de%20Boussy%2C%2091860%20Epinay-sous-Senart",
 
   // ── Présentation ──────────────────────────────────────────────────────
   intro: {
@@ -67,7 +70,11 @@ export const data = {
   practical: [
     { label: "Date", value: "Samedi 4 juillet 2026", icon: "calendar" },
     { label: "Horaires", value: "À partir de 14h", icon: "clock" },
-    { label: "Lieu", value: "Parc de l'Europe — Épinay-sous-Sénart", icon: "pin" },
+    {
+      label: "Lieu",
+      value: "Parc de l'Europe — 10 Rue de Boussy, Épinay-sous-Sénart",
+      icon: "pin",
+    },
     { label: "Tarif", value: "Gratuit, ouvert à tous", icon: "ticket" },
   ],
 
@@ -102,11 +109,11 @@ export const data = {
   },
 
   // ── Contact & réseaux ─────────────────────────────────────────────────
-  // TODO Akira : renseigne l'e-mail générique de l'asso et le compte Instagram.
+  // TODO Akira : renseigne l'e-mail générique de l'asso.
   contact: {
     email: "contact@stellayr.fr",
-    instagram: "https://instagram.com/stellayr",
-    instagramLabel: "@stellayr",
+    instagram: "https://www.instagram.com/s_tellayr/",
+    instagramLabel: "@s_tellayr",
   },
 
   // ── Technique (pied de page, SEO) ─────────────────────────────────────
