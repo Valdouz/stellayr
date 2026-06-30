@@ -95,7 +95,11 @@ export const data = {
       logo: "assets/img/partners/epinay.png",
     },
     { name: "Fall City", note: "Régie son & lumière", kind: "fallcity" },
-    { name: "Hype Kye Unity", note: "École de danse", logo: null },
+    {
+      name: "Hype Kye Unity",
+      note: "École de danse",
+      logo: "assets/img/partners/hype-kye-unity.png",
+    },
     {
       name: "Flash Spectacle",
       note: "École de danse & DJ",
