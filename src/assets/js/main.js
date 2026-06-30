@@ -81,9 +81,14 @@ function renderPartners() {
   if (!root) return;
   root.innerHTML = data.partners
     .map((p) => {
-      const inner = p.logo
-        ? `<span class="partner__logo${p.light ? " partner__logo--light" : ""}"><img src="${p.logo}" alt="${p.name}" loading="lazy" /></span>`
-        : `<span class="partner__name">${p.name}</span>`;
+      let inner;
+      if (p.kind === "fallcity") {
+        inner = `<span class="partner__fallcity" aria-label="Fall City"><span>Fall</span><span>City</span></span>`;
+      } else if (p.logo) {
+        inner = `<span class="partner__logo"><img src="${p.logo}" alt="${p.name}" loading="lazy" /></span>`;
+      } else {
+        inner = `<span class="partner__name">${p.name}</span>`;
+      }
       return `<li class="partner" title="${p.name}">${inner}${
         p.note ? `<span class="partner__note">${p.note}</span>` : ""
       }</li>`;

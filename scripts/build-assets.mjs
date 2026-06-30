@@ -135,7 +135,7 @@ async function buildPartnerLogos() {
   ensureDir(partnersDir);
   const jobs = [
     ["partner-flash-spectacle-source.png", "flash-spectacle"],
-    ["partner-battle-style-32-source.png", "battle-style-32"],
+    ["partner-epinay-source.png", "epinay"],
   ];
   for (const [src, out] of jobs) {
     const input = join(refs, src);

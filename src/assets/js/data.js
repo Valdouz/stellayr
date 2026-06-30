@@ -87,21 +87,19 @@ export const data = {
 
   // ── Partenaires ───────────────────────────────────────────────────────
   // logo : chemin vers une image (ou null pour afficher joliment le nom).
-  // light : true si le logo a besoin d'un fond clair (logo sombre/coloré).
+  // kind "fallcity" : rend le logo texte « Fall / City » (en attendant le vrai fichier).
   partners: [
-    { name: "Ville d'Épinay-sous-Sénart", note: "L'Été Épinay", logo: null },
+    {
+      name: "Ville d'Épinay-sous-Sénart",
+      note: "L'Été Épinay",
+      logo: "assets/img/partners/epinay.png",
+    },
+    { name: "Fall City", note: "Régie son & lumière", kind: "fallcity" },
+    { name: "Hype Kye Unity", note: "École de danse", logo: null },
     {
       name: "Flash Spectacle",
       note: "École de danse & DJ",
       logo: "assets/img/partners/flash-spectacle.png",
-      light: false,
-    },
-    { name: "Toni'Cité", note: "Partenaire local", logo: null },
-    {
-      name: "Battle Style 32",
-      note: "Danse hip-hop",
-      logo: "assets/img/partners/battle-style-32.png",
-      light: true,
     },
   ],
 

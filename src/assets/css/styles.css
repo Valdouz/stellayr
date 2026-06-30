@@ -800,26 +800,29 @@ h3 {
   height: 78px;
 }
 
-.partner__logo--light {
-  padding: 0.5rem 0.9rem;
-  background: #fff;
-  border-radius: 12px;
-}
-
 .partner img {
   max-height: 70px;
   width: auto;
   object-fit: contain;
 }
 
-.partner__logo--light img {
-  max-height: 58px;
-}
-
 .partner__name {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.05rem;
+}
+
+/* Logo texte « Fall / City » (approximation en attendant le vrai fichier) */
+.partner__fallcity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-impact);
+  line-height: 0.82;
+  letter-spacing: 0.02em;
+  font-size: 2.1rem;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 .partner__note {
