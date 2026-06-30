@@ -17,6 +17,7 @@
     "lint": "npm run format:check && npm run lint:js && npm run lint:css && npm run lint:html",
     "test": "vitest run",
     "test:watch": "vitest",
+    "deploy": "bash scripts/deploy.sh",
     "prepare": "husky || true"
   },
   "lint-staged": {

@@ -1,10 +1,12 @@
-name: Deploy to OVH
+name: Deploy
 
-# Publie le contenu de src/ sur l'hebergement OVH via FTP a chaque push sur main.
-# Le job ne fait rien tant que les secrets FTP ne sont pas configures (il previent
-# avec un warning au lieu d'echouer). Secrets a definir dans
-# GitHub > Settings > Secrets and variables > Actions :
-#   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_PROTOCOL (ftps/ftp), FTP_REMOTE_DIR
+# Déploie src/ vers le serveur (canada) via rsync/SSH, à travers le tailnet.
+# OPTIONNEL : ne fait rien tant que les secrets ne sont pas configurés (warning).
+# Alternative plus simple : déployer depuis ta machine avec `npm run deploy`.
+#
+# Secrets à définir (GitHub > Settings > Secrets and variables > Actions) :
+#   DEPLOY_HOST, DEPLOY_USER, DEPLOY_PATH, DEPLOY_SSH_KEY (clé privée),
+#   TS_OAUTH_CLIENT_ID, TS_OAUTH_SECRET (Tailscale OAuth, pour rejoindre le tailnet).
 
 on:
   push:
@@ -15,39 +17,42 @@ permissions:
   contents: read
 
 concurrency:
-  group: deploy-ovh
+  group: deploy
   cancel-in-progress: true
 
 jobs:
   deploy:
-    name: FTP deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Verifier la presence des secrets FTP
+      - name: Vérifier la présence des secrets
         id: check
         env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
         run: |
-          if [ -n "$FTP_SERVER" ]; then
+          if [ -n "$DEPLOY_HOST" ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::Secrets FTP absents — deploiement ignore. Ajoutez FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_REMOTE_DIR dans les secrets du depot."
+            echo "::warning::Secrets de déploiement absents — étape ignorée (déploie via 'npm run deploy' ou configure les secrets)."
           fi
 
-      - name: Deploiement FTP vers OVH
+      - name: Connexion au tailnet (Tailscale)
         if: steps.check.outputs.ready == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: tailscale/github-action@v3
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ secrets.FTP_PROTOCOL }}
-          local-dir: ./src/
-          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
-          exclude: |
-            **/.DS_Store
-            **/Thumbs.db
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Déploiement rsync
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          install -m 600 /dev/null key
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > key
+          rsync -az --delete \
+            --exclude ".DS_Store" --exclude "Thumbs.db" \
+            -e "ssh -i key -o StrictHostKeyChecking=accept-new" \
+            src/ "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}/"
+          rm -f key

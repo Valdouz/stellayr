@@ -800,14 +800,14 @@ h3 {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 104px;
-  padding: 0.6rem 1rem;
+  height: 116px;
+  padding: 1rem 1.2rem;
   background: #fff;
   border-radius: 14px;
 }
 
 .partner img {
-  max-height: 80px;
+  height: 84px;
   max-width: 90%;
   width: auto;
   object-fit: contain;
