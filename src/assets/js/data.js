@@ -22,8 +22,7 @@ export const data = {
   city: "Épinay-sous-Sénart",
   price: "Gratuit",
   framework: "Dans le cadre de « L'Été Épinay »",
-  mapUrl:
-    "https://www.openstreetmap.org/search?query=10%20Rue%20de%20Boussy%2C%2091860%20Epinay-sous-Senart",
+  mapUrl: "https://www.openstreetmap.org/?mlat=48.696385&mlon=2.515824#map=19/48.696385/2.515824",
 
   // ── Présentation ──────────────────────────────────────────────────────
   intro: {
