@@ -793,29 +793,29 @@ h3 {
   background: var(--surface-2);
 }
 
-.partner__logo {
+/* Panneau blanc identique pour tous les partenaires (look « mur de logos » cohérent) */
+.partner__logo,
+.partner__fallcity {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 84px;
-}
-
-/* Chip clair soigné pour les logos « encre » (sur fond clair) */
-.partner__logo--light {
-  padding: 0.7rem 1.1rem;
+  width: 100%;
+  height: 92px;
+  padding: 0.7rem 1rem;
   background: #fff;
   border-radius: 14px;
-  box-shadow: 0 8px 22px -12px rgb(0 0 0 / 0.55);
 }
 
 .partner img {
-  max-height: 70px;
+  max-height: 56px;
+  max-width: 82%;
   width: auto;
   object-fit: contain;
 }
 
-.partner__logo--light img {
-  max-height: 56px;
+/* Logo blanc (Flash Spectacle) inversé en noir pour ressortir sur le panneau blanc */
+.partner__logo--invert img {
+  filter: brightness(0);
 }
 
 .partner__name {
@@ -826,14 +826,12 @@ h3 {
 
 /* Logo texte « Fall / City » (approximation en attendant le vrai fichier) */
 .partner__fallcity {
-  display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: var(--font-impact);
   line-height: 0.82;
   letter-spacing: 0.02em;
-  font-size: 2.1rem;
-  color: #fff;
+  font-size: 1.9rem;
+  color: #14102b;
   text-transform: uppercase;
 }
 

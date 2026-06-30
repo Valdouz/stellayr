@@ -85,7 +85,7 @@ function renderPartners() {
       if (p.kind === "fallcity") {
         inner = `<span class="partner__fallcity" aria-label="Fall City"><span>Fall</span><span>City</span></span>`;
       } else if (p.logo) {
-        inner = `<span class="partner__logo${p.light ? " partner__logo--light" : ""}"><img src="${p.logo}" alt="${p.name}" loading="lazy" /></span>`;
+        inner = `<span class="partner__logo${p.invert ? " partner__logo--invert" : ""}"><img src="${p.logo}" alt="${p.name}" loading="lazy" /></span>`;
       } else {
         inner = `<span class="partner__name">${p.name}</span>`;
       }
