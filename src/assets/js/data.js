@@ -93,12 +93,14 @@ export const data = {
       name: "Ville d'Épinay-sous-Sénart",
       note: "L'Été Épinay",
       logo: "assets/img/partners/epinay.png",
+      light: true,
     },
     { name: "Fall City", note: "Régie son & lumière", kind: "fallcity" },
     {
       name: "Hype Kye Unity",
       note: "École de danse",
       logo: "assets/img/partners/hype-kye-unity.png",
+      light: true,
     },
     {
       name: "Flash Spectacle",
