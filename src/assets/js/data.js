@@ -16,11 +16,13 @@ export const data = {
   dateLabel: "Samedi 4 juillet 2026",
   timeLabel: "À partir de 14h",
   venue: "Parc de l'Europe",
-  venueNote: "face à la mairie",
+  venueNote: "10 Rue de Boussy",
+  street: "10 Rue de Boussy",
+  postalCode: "91860",
   city: "Épinay-sous-Sénart",
   price: "Gratuit",
   framework: "Dans le cadre de « L'Été Épinay »",
-  mapUrl: "https://www.openstreetmap.org/search?query=Parc%20de%20l%27Europe%20Epinay-sous-Senart",
+  mapUrl: "https://www.openstreetmap.org/?mlat=48.696385&mlon=2.515824#map=19/48.696385/2.515824",
 
   // ── Présentation ──────────────────────────────────────────────────────
   intro: {
@@ -67,27 +69,41 @@ export const data = {
   practical: [
     { label: "Date", value: "Samedi 4 juillet 2026", icon: "calendar" },
     { label: "Horaires", value: "À partir de 14h", icon: "clock" },
-    { label: "Lieu", value: "Parc de l'Europe — Épinay-sous-Sénart", icon: "pin" },
+    {
+      label: "Lieu",
+      value: "Parc de l'Europe — 10 Rue de Boussy, Épinay-sous-Sénart",
+      icon: "pin",
+    },
     { label: "Tarif", value: "Gratuit, ouvert à tous", icon: "ticket" },
   ],
 
+  // ── Bénévoles ─────────────────────────────────────────────────────────
+  volunteer: {
+    title: "Deviens bénévole",
+    text: "Le festival se construit avec sa team de bénévoles : accueil du public, stands, logistique, montage et démontage… Rejoins l'aventure et vis S'TELLAYR de l'intérieur, en préparation comme le jour J.",
+    ctaLabel: "Je veux aider",
+  },
+
   // ── Partenaires ───────────────────────────────────────────────────────
   // logo : chemin vers une image (ou null pour afficher joliment le nom).
-  // light : true si le logo a besoin d'un fond clair (logo sombre/coloré).
+  // kind "fallcity" : rend le logo texte « Fall / City » (en attendant le vrai fichier).
   partners: [
-    { name: "Ville d'Épinay-sous-Sénart", note: "L'Été Épinay", logo: null },
+    {
+      name: "Ville d'Épinay-sous-Sénart",
+      note: "L'Été Épinay",
+      logo: "assets/img/partners/epinay.png",
+    },
+    { name: "Fall City", note: "Régie son & lumière", kind: "fallcity" },
+    {
+      name: "Hype Kye Unity",
+      note: "École de danse",
+      logo: "assets/img/partners/hype-kye-unity.png",
+    },
     {
       name: "Flash Spectacle",
       note: "École de danse & DJ",
       logo: "assets/img/partners/flash-spectacle.png",
-      light: false,
-    },
-    { name: "Toni'Cité", note: "Partenaire local", logo: null },
-    {
-      name: "Battle Style 32",
-      note: "Danse hip-hop",
-      logo: "assets/img/partners/battle-style-32.png",
-      light: true,
+      invert: true,
     },
   ],
 
@@ -102,11 +118,11 @@ export const data = {
   },
 
   // ── Contact & réseaux ─────────────────────────────────────────────────
-  // TODO Akira : renseigne l'e-mail générique de l'asso et le compte Instagram.
+  // TODO Akira : renseigne l'e-mail générique de l'asso.
   contact: {
-    email: "contact@stellayr.fr",
-    instagram: "https://instagram.com/stellayr",
-    instagramLabel: "@stellayr",
+    email: "contact@fallcityband.com",
+    instagram: "https://www.instagram.com/s_tellayr/",
+    instagramLabel: "@s_tellayr",
   },
 
   // ── Technique (pied de page, SEO) ─────────────────────────────────────

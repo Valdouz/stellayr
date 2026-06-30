@@ -34,7 +34,7 @@ src/                      # le site (c'est ce dossier qui est mis en ligne)
     fonts/                # polices libres auto-hébergées (Space Grotesk, Inter, Anton — licence OFL)
 tests/                    # tests automatisés (Vitest)
 scripts/build-assets.mjs  # (re)génère favicon + image de partage + optimise les logos
-.github/workflows/        # CI (lint + tests) et déploiement FTP vers OVH
+.github/workflows/        # CI (lint + tests) et déploiement (rsync vers le serveur)
 ```
 
 ## ✏️ Mettre à jour le contenu
@@ -64,25 +64,29 @@ et lance les tests avant chaque `git push`.
 npm run assets     # recrée favicon, image Open Graph et optimise les logos partenaires
 ```
 
-## 🌐 Déploiement (OVH)
+## 🌐 Déploiement (serveur « canada » + Cloudflare)
 
-Le site se déploie tout seul sur l'hébergement **OVH** à chaque push sur `main`, via
-GitHub Actions ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)).
+Le site est statique : on publie le contenu de `src/` sur le serveur, servi derrière
+**Cloudflare** (DNS + HTTPS).
 
-**Configuration unique** — dans GitHub : `Settings → Secrets and variables → Actions`, ajouter :
+**Méthode simple — depuis ta machine (recommandée).** Copier `.env.example` en `.env`,
+remplir (hôte, utilisateur, dossier web), puis :
 
-| Secret           | Exemple                          |
-| ---------------- | -------------------------------- |
-| `FTP_SERVER`     | `ftp.cluster0XX.hosting.ovh.net` |
-| `FTP_USERNAME`   | votre identifiant FTP OVH        |
-| `FTP_PASSWORD`   | votre mot de passe FTP OVH       |
-| `FTP_PROTOCOL`   | `ftps`                           |
-| `FTP_REMOTE_DIR` | `./www/` (racine web OVH)        |
+```bash
+npm run deploy   # lint + tests, puis rsync de src/ vers le serveur (via SSH/Tailscale)
+```
 
-Tant que ces secrets ne sont pas définis, le déploiement est simplement ignoré (sans erreur).
+**Méthode automatique — GitHub Actions** ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) :
+déploie à chaque push sur `main`. Secrets à définir dans
+`GitHub → Settings → Secrets and variables → Actions` :
 
-**Déploiement manuel** (sans GitHub) : copier le contenu de `src/` dans le dossier `www/`
-de votre espace OVH via FTP (FileZilla, ou un client de votre choix).
+| Secret                                        | Rôle                                                             |
+| --------------------------------------------- | ---------------------------------------------------------------- |
+| `DEPLOY_HOST` / `DEPLOY_USER` / `DEPLOY_PATH` | cible rsync (ex. `100.65.165.9` / `akira` / `/var/www/stellayr`) |
+| `DEPLOY_SSH_KEY`                              | clé privée SSH autorisée sur le serveur                          |
+| `TS_OAUTH_CLIENT_ID` / `TS_OAUTH_SECRET`      | OAuth Tailscale (le runner rejoint le tailnet)                   |
+
+Tant que ces secrets ne sont pas définis, le job est simplement ignoré (sans erreur).
 
 ## 🔤 Polices & licences
 

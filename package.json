@@ -17,6 +17,7 @@
     "lint": "npm run format:check && npm run lint:js && npm run lint:css && npm run lint:html",
     "test": "vitest run",
     "test:watch": "vitest",
+    "deploy": "bash scripts/deploy.sh",
     "prepare": "husky || true"
   },
   "lint-staged": {
@@ -47,7 +48,6 @@
     "html-validate": "^11.5.3",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",
-    "playwright": "^1.61.0",
     "prettier": "^3.8.4",
     "serve": "^14.2.6",
     "sharp": "^0.35.1",

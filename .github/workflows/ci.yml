@@ -19,11 +19,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        # npm install (et non npm ci) : sharp a des binaires optionnels par
+        # plateforme, et un lockfile généré sous Windows fait échouer `npm ci`
+        # sur la CI Linux. npm install résout correctement selon la plateforme.
+        run: npm install --no-audit --no-fund
 
       - name: Lint (prettier + eslint + stylelint + html-validate)
         run: npm run lint

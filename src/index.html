@@ -9,9 +9,18 @@
       content="S'TELLAYR, festival artistique par et pour les jeunes d'Épinay-sous-Sénart. Samedi 4 juillet 2026 au Parc de l'Europe : concours de danse, scène ouverte et DJ set. Gratuit."
     />
     <meta name="theme-color" content="#7b2ff7" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Association S'tellayr" />
+    <meta
+      name="keywords"
+      content="S'TELLAYR, festival, Épinay-sous-Sénart, Essonne, jeunes, danse, scène ouverte, DJ, concours de danse, été 2026, gratuit, L'Été Épinay"
+    />
+    <meta name="geo.region" content="FR-91" />
+    <meta name="geo.placename" content="Épinay-sous-Sénart" />
+    <!-- IMPORTANT SEO : remplacer https://stellayr.fr par le nom de domaine final partout (canonical, og:url, og:image, JSON-LD, sitemap.xml, robots.txt). -->
     <link rel="canonical" href="https://stellayr.fr/" />
 
-    <!-- Partage sur les réseaux -->
+    <!-- Open Graph / réseaux sociaux -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="S'TELLAYR" />
@@ -21,8 +30,14 @@
       content="Samedi 4 juillet 2026 · Parc de l'Europe, Épinay-sous-Sénart. Concours de danse, scène ouverte, DJ set. Gratuit."
     />
     <meta property="og:url" content="https://stellayr.fr/" />
-    <meta property="og:image" content="assets/img/og-image.png" />
+    <meta property="og:image" content="https://stellayr.fr/assets/img/og-image.png" />
+    <meta property="og:image:alt" content="Logo du festival S'TELLAYR sur fond coloré" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="S'TELLAYR — Festival des étoiles de demain" />
+    <meta name="twitter:description" content="Samedi 4 juillet 2026 · Parc de l'Europe, Épinay-sous-Sénart. Gratuit." />
+    <meta name="twitter:image" content="https://stellayr.fr/assets/img/og-image.png" />
 
     <!-- Favicons -->
     <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" />
@@ -30,8 +45,61 @@
     <link rel="apple-touch-icon" href="assets/img/favicon-180.png" />
     <link rel="manifest" href="site.webmanifest" />
 
+    <!-- Préchargements (performance / LCP) -->
+    <link rel="preload" as="image" href="assets/img/logo-stellayr.svg" type="image/svg+xml" />
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/spacegrotesk-latin-wght.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/anton-latin-400.woff2" crossorigin />
+
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script type="module" src="assets/js/main.js"></script>
+
+    <!-- Données structurées (Google : résultats enrichis « Événement ») -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Festival",
+        "name": "S'TELLAYR",
+        "description": "Festival artistique par et pour les jeunes d'Épinay-sous-Sénart : concours de danse, scène ouverte et DJ set. Gratuit.",
+        "startDate": "2026-07-04T14:00:00+02:00",
+        "endDate": "2026-07-04T23:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "image": "https://stellayr.fr/assets/img/og-image.png",
+        "url": "https://stellayr.fr/",
+        "isAccessibleForFree": true,
+        "inLanguage": "fr",
+        "location": {
+          "@type": "Place",
+          "name": "Parc de l'Europe",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "10 Rue de Boussy",
+            "postalCode": "91860",
+            "addressLocality": "Épinay-sous-Sénart",
+            "addressRegion": "Essonne",
+            "addressCountry": "FR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 48.696385,
+            "longitude": 2.515824
+          }
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Association S'tellayr",
+          "url": "https://stellayr.fr/",
+          "sameAs": "https://www.instagram.com/s_tellayr/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://stellayr.fr/"
+        }
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Aller au contenu</a>
@@ -56,6 +124,7 @@
           <a href="#festival">Le festival</a>
           <a href="#programme">Programme</a>
           <a href="#infos">Infos pratiques</a>
+          <a href="#benevoles">Bénévoles</a>
           <a href="#asso">L'asso</a>
           <a class="nav__cta" href="#contact">Contact</a>
         </nav>
@@ -72,7 +141,13 @@
             <span data-text="edition">1re édition</span> · <span data-text="framework">L'Été Épinay</span>
           </p>
           <h1 id="hero-title" class="hero__title">
-            <img class="hero__logo" src="assets/img/logo-stellayr.png" alt="S'TELLAYR" width="880" height="778" />
+            <img
+              class="hero__logo"
+              src="assets/img/logo-stellayr.svg"
+              alt="S'TELLAYR — festival artistique à Épinay-sous-Sénart"
+              width="917"
+              height="811"
+            />
           </h1>
           <p class="hero__tagline" data-text="tagline">Viens admirer les étoiles de demain.</p>
 
@@ -149,6 +224,20 @@
             <a class="btn btn--ghost" data-href="mapUrl" href="#" target="_blank" rel="noopener noreferrer"
               >Itinéraire ↗</a
             >
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── Bénévoles ─────────────── -->
+      <section id="benevoles" class="section">
+        <div class="container">
+          <div class="join">
+            <div class="join__text">
+              <p class="kicker">Rejoins l'équipe</p>
+              <h2 class="section__title" data-text="volunteer.title">Deviens bénévole</h2>
+              <p class="section__lead" data-text="volunteer.text"></p>
+            </div>
+            <a class="btn btn--primary join__cta" href="#contact" data-text="volunteer.ctaLabel">Je veux aider</a>
           </div>
         </div>
       </section>

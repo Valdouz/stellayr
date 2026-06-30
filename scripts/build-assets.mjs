@@ -135,7 +135,8 @@ async function buildPartnerLogos() {
   ensureDir(partnersDir);
   const jobs = [
     ["partner-flash-spectacle-source.png", "flash-spectacle"],
-    ["partner-battle-style-32-source.png", "battle-style-32"],
+    ["partner-epinay-source.png", "epinay"],
+    ["partner-battle-style-32-source.png", "hype-kye-unity"],
   ];
   for (const [src, out] of jobs) {
     const input = join(refs, src);
@@ -143,8 +144,10 @@ async function buildPartnerLogos() {
       console.warn(`⚠  ${src} introuvable dans references/ — ignoré.`);
       continue;
     }
-    await sharp(input)
-      .resize({ width: 600, withoutEnlargement: true })
+    // Détourage des marges transparentes pour que le logo remplisse son panneau.
+    const trimmed = await sharp(input).trim({ threshold: 10 }).png().toBuffer();
+    await sharp(trimmed)
+      .resize({ width: 600, height: 600, fit: "inside", withoutEnlargement: true })
       .png({ quality: 90, compressionLevel: 9, palette: true })
       .toFile(join(partnersDir, `${out}.png`));
     console.log(`✓ partenaire ${out}`);
