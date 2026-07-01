@@ -66,27 +66,20 @@ npm run assets     # recrée favicon, image Open Graph et optimise les logos par
 
 ## 🌐 Déploiement (serveur « canada » + Cloudflare)
 
-Le site est statique : on publie le contenu de `src/` sur le serveur, servi derrière
-**Cloudflare** (DNS + HTTPS).
+Le site est statique et servi derrière **Cloudflare** (DNS + HTTPS, via Cloudflare Tunnel).
+Le serveur héberge un **clone de ce dépôt** et sert le dossier `src/` (conteneur nginx).
 
-**Méthode simple — depuis ta machine (recommandée).** Copier `.env.example` en `.env`,
-remplir (hôte, utilisateur, dossier web), puis :
+**Mise à jour automatique.** Un `git pull` régulier (cron) sur le serveur récupère les
+nouveaux commits de `main` : il suffit donc de **pousser sur GitHub** pour publier.
+
+**Mise à jour immédiate — depuis ta machine.** Copier `.env.example` en `.env`, remplir
+(hôte, utilisateur, chemin du clone), puis :
 
 ```bash
-npm run deploy   # lint + tests, puis rsync de src/ vers le serveur (via SSH/Tailscale)
+npm run deploy   # lint + tests, puis `git pull` sur le serveur via SSH
 ```
 
-**Méthode automatique — GitHub Actions** ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) :
-déploie à chaque push sur `main`. Secrets à définir dans
-`GitHub → Settings → Secrets and variables → Actions` :
-
-| Secret                                        | Rôle                                                             |
-| --------------------------------------------- | ---------------------------------------------------------------- |
-| `DEPLOY_HOST` / `DEPLOY_USER` / `DEPLOY_PATH` | cible rsync (ex. `100.65.165.9` / `akira` / `/var/www/stellayr`) |
-| `DEPLOY_SSH_KEY`                              | clé privée SSH autorisée sur le serveur                          |
-| `TS_OAUTH_CLIENT_ID` / `TS_OAUTH_SECRET`      | OAuth Tailscale (le runner rejoint le tailnet)                   |
-
-Tant que ces secrets ne sont pas définis, le job est simplement ignoré (sans erreur).
+> Le serveur sert directement les fichiers du clone : aucun rebuild n'est nécessaire.
 
 ## 🔤 Polices & licences
 
